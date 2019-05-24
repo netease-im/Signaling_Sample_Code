@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AVSignalling</string>
+    <string name="account_hint">账号</string>
+    <string name="login_now">立即登录</string>
+    <string name="password">密码</string>
+    <string name="call_number">呼叫帐号</string>
+    <string name="call_now">立即呼叫</string>
+    <string name="accept">接受</string>
+    <string name="reject">拒绝</string>
+    <string name="please_input_room_id">请输入房间号码,最多八位</string>
+    <string name="enter_room">加入房间</string>
+    <string name="create_room">创建房间</string>
+    <string name="leave_room">离开房间</string>
+</resources>

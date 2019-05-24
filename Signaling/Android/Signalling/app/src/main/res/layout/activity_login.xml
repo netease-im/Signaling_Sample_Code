@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/login_container"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_nim_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="网易云信独立信令"
+        android:textColor="@color/color_333333"
+        android:textSize="24sp"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_edit_account_container"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_below="@id/tv_nim_title"
+        android:layout_marginLeft="@dimen/dp_size_16"
+        android:layout_marginRight="@dimen/dp_size_16"
+        android:layout_marginTop="80dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edt_login_user_account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:hint="@string/account_hint"
+            android:inputType="text"
+            android:paddingBottom="@dimen/dp_size_7"
+            android:singleLine="true"
+            android:textColor="@color/color_333333"
+            android:textColorHint="@color/color_999999"
+            android:textSize="@dimen/sp_size_15"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/split_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/ll_edit_account_container"
+        android:layout_marginLeft="@dimen/dp_size_16"
+        android:layout_marginRight="@dimen/dp_size_16"
+        android:background="@color/color_999999"></View>
+
+    <LinearLayout
+        android:id="@+id/ll_edit_password_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/split_line"
+        android:layout_marginLeft="@dimen/dp_size_16"
+        android:layout_marginRight="@dimen/dp_size_16"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edt_login_user_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingBottom="@dimen/dp_size_7"
+            android:singleLine="true"
+            android:textColor="@color/color_333333"
+            android:textColorHint="@color/color_999999"
+            android:textSize="@dimen/sp_size_15"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/split_line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/ll_edit_password_container"
+        android:layout_marginLeft="@dimen/dp_size_16"
+        android:layout_marginRight="@dimen/dp_size_16"
+        android:background="@color/color_999999"></View>
+
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/split_line1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dp_size_16"
+        android:layout_marginRight="@dimen/dp_size_16"
+        android:layout_marginTop="@dimen/dp_size_30"
+        android:background="@drawable/blue_round_25_selector"
+        android:gravity="center"
+        android:text="@string/login_now"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_size_18"/>
+</RelativeLayout>
+
+

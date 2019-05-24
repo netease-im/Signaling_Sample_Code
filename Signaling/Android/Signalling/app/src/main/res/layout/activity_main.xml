@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/room_info"
+        style="@style/normal_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:autoLink="all"
+        android:background="@drawable/logout_btn_bg"
+        android:text="退出登录"/>
+
+
+    <TextView
+        android:id="@+id/tv_nim_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="网易云信独立信令"
+        android:textColor="@color/color_333333"
+        android:textSize="24sp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_edit_account_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_nim_title"
+        android:layout_marginLeft="@dimen/dp_size_16"
+        android:layout_marginRight="@dimen/dp_size_16"
+        android:layout_marginTop="80dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edt_call_account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:hint="@string/please_input_room_id"
+            android:inputType="text"
+            android:paddingBottom="@dimen/dp_size_7"
+            android:singleLine="true"
+            android:textColor="@color/color_333333"
+            android:textColorHint="@color/color_999999"
+            android:textSize="@dimen/sp_size_15"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/split_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/ll_edit_account_container"
+        android:layout_marginLeft="@dimen/dp_size_16"
+        android:layout_marginRight="@dimen/dp_size_16"
+        android:background="@color/color_999999"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/split_line"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_create"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dp_size_16"
+            android:layout_marginRight="@dimen/dp_size_16"
+            android:layout_marginTop="@dimen/dp_size_30"
+            android:layout_weight="1"
+            android:background="@drawable/blue_round_25_selector"
+            android:gravity="center"
+            android:text="@string/create_room"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_size_18"/>
+
+        <TextView
+            android:id="@+id/tv_enter"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dp_size_16"
+            android:layout_marginRight="@dimen/dp_size_16"
+            android:layout_marginTop="@dimen/dp_size_30"
+            android:layout_weight="1"
+            android:background="@drawable/blue_round_25_selector"
+            android:gravity="center"
+            android:text="@string/enter_room"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_size_18"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
