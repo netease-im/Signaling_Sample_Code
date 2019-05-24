@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>独立呼叫DEMO</title>
+</head>
+<style>
+    html {
+        height: 100%;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: #eee;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: sans-serif;
+        height: 100%;
+    }
+
+    .box {
+        background-color: white;
+        border-radius: 30px;
+        padding: 20px;
+        min-width: 300px;
+        min-height: 400px;
+    }
+
+    [class^="frame"] {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login label {
+        display: block;
+        /* min-width: 280px; */
+        text-align: right;
+    }
+
+    .login input {
+        padding: 5px 10px;
+        outline: none;
+        font: inherit;
+        border: 1px solid #999;
+        margin: 10px;
+        border-radius: 4px;
+    }
+
+    .login input:focus {
+        border-color: #337beb;
+    }
+
+    .btn {
+        display: inline-block;
+        text-decoration: none;
+        padding: 10px 20px;
+        background-color: #337beb;
+        color: white;
+        border-radius: 4px;
+    }
+
+    .btn:hover {
+        box-shadow: inset 2px 3px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .info-banner {
+        text-align: right;
+    }
+
+    .side-by-side {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .left,
+    .right {
+        display: flex;
+        flex-grow: 1;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .input {
+        margin: 10px
+    }
+
+    .input input {
+        text-decoration: none;
+        border: none;
+        border-bottom: 1px solid #333333;
+        font: inherit;
+        padding: 5px 10px;
+    }
+
+    .input input:focus {
+        outline: none;
+        border-bottom: 1px solid #337beb;
+    }
+
+    .logger {
+        height: 300px;
+        min-width: 400px;
+        word-break: break-all;
+        overflow: auto;
+    }
+</style>
+
+<body>
+
+    <div id="frame-1" class="frame">
+        <div class="box login">
+            <h1>独立呼叫信令DEMO</h1>
+            <label>帐号<input type="text" value="zys1" id="account" placeholder="zys1 zys2 都可以" /></label>
+            <label>密码<input type="text" value="e10adc3949ba59abbe56e057f20f883e" id="token" /></label>
+            <div style="margin-top:30px">
+                <a id="login" href="javascript:;" class="btn">立即登录</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="frame-2" class="frame hide">
+        <div class="box">
+            <p class="info-banner">
+                <span id="ui-user"></span>&nbsp;&nbsp;&nbsp;<a href="javascript:logout()">退出登录</a>
+            </p>
+            <div class="side-by-side" style="height: 300px;align-items: center;max-width:600px;">
+                <div class="left">
+                    <div class="input">
+                        <input id="channelName-create" value="10086" type="text" placeholder="请输入房间别名" />
+                    </div>
+                    <a id="create-room" class="btn" href="javascript:void 0">创建房间</a>
+                </div>
+                <div class="right">
+                    <div class="input">
+                        <input id="channelId-join" type="text" placeholder="请输入房间的channelID" />
+                    </div>
+                    <a id="join-room" class="btn" href="javascript:void 0">加入房间</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="frame-3" class="frame hide">
+        <div class="box">
+            <p style="text-align:center">
+                当前房间的 channelId：<span id="ui-channelId"></span>
+            </p>
+            <div id="logger" class="logger">
+
+            </div>
+            <div style="text-align:center">
+                <a id="exit-room" class="btn" href="javascript:void 0">离开房间</a>
+            </div>
+        </div>
+    </div>
+    <script src="../libs/jquery-3.4.0.min.js"></script>
+    <script src="../libs/NIM_Web_NIM_v6.4.0.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
