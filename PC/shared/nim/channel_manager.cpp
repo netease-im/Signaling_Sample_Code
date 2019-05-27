@@ -11,6 +11,11 @@ ChannelManager::ChannelManager(QObject *parent)
     nim::Signaling::RegOnlineNotifyCb(std::bind(&ChannelManager::onlineNotifyCallback, this, std::placeholders::_1));
 }
 
+ChannelManager::~ChannelManager()
+{
+    closeChannel();
+}
+
 void ChannelManager::onlineNotifyCallback(std::shared_ptr<nim::SignalingNotityInfo> info)
 {
     if (info->event_type_ == nim::kNIMSignalingEventTypeClose) {
@@ -38,7 +43,7 @@ void ChannelManager::onlineNotifyCallback(std::shared_ptr<nim::SignalingNotityIn
     emit channelNotifySignal(info->from_account_id_.c_str(), info->event_type_);
 }
 
-void ChannelManager::createCallback(int resCode, std::shared_ptr<nim::SignalingResParam> param)
+void ChannelManager::createChannelCallback(int resCode, std::shared_ptr<nim::SignalingResParam> param)
 {
     if (resCode == 200) {
         auto createResParam = std::reinterpret_pointer_cast<nim::SignalingCreateResParam>(param);
@@ -147,7 +152,7 @@ void ChannelManager::createChannel()
     nim::SignalingCreateParam param;
     param.channel_type_ = nim::kNIMSignalingTypeVideo;
     param.channel_name_ = m_createChannelName.toStdString();
-    nim::Signaling::SignalingCreate(param, std::bind(&ChannelManager::createCallback, this,
+    nim::Signaling::SignalingCreate(param, std::bind(&ChannelManager::createChannelCallback, this,
                                                      std::placeholders::_1, std::placeholders::_2));
 }
 

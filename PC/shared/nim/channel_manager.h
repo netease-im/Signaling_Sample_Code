@@ -23,6 +23,7 @@ class ChannelManager : public QObject
 
 public:
     explicit ChannelManager(QObject *parent = nullptr);
+    ~ChannelManager();
 
 private:
     QString createChannelName() { return m_createChannelName; }
@@ -54,7 +55,7 @@ private:
 
     // callback
     void onlineNotifyCallback(std::shared_ptr<nim::SignalingNotityInfo> info);
-    void createCallback(int resCode, std::shared_ptr<nim::SignalingResParam> param);
+    void createChannelCallback(int resCode, std::shared_ptr<nim::SignalingResParam> param);
     void joinChannelCallback(int resCode, std::shared_ptr<nim::SignalingResParam> param);
     void leaveChannelCallback(int resCode, std::shared_ptr<nim::SignalingResParam> param);
     void closeChannelCallback(int resCode, std::shared_ptr<nim::SignalingResParam> param);
