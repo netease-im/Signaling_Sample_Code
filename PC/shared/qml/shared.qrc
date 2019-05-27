@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/shared"/>
+    <qresource prefix="/">
+        <file>Caption.qml</file>
+        <file>ImageButton.qml</file>
+        <file>images/public/button/btn_wnd_white_close.png</file>
+        <file>images/public/button/btn_wnd_white_close_hovered.png</file>
+        <file>images/public/button/btn_wnd_white_close_pushed.png</file>
+        <file>images/public/button/btn_wnd_white_min.png</file>
+        <file>images/public/button/btn_wnd_white_min_hovered.png</file>
+        <file>images/public/button/btn_wnd_white_min_pushed.png</file>
+        <file>images/public/caption/logo_18x18.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Login.qml</file>
+        <file>LoginForm.ui.qml</file>
+        <file>SignalingFront.qml</file>
+        <file>SignalingFrontForm.ui.qml</file>
+        <file>SignalingRoom.qml</file>
+        <file>SignalingRoomForm.ui.qml</file>
+    </qresource>
+</RCC>
