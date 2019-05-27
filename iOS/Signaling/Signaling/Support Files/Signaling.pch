@@ -1,0 +1,17 @@
+//
+//  Signaling.pch
+//  Signaling
+//
+//  Created by Netease on 2019/4/23.
+//  Copyright © 2019年 Netease. All rights reserved.
+//
+
+#ifndef Signaling_pch
+#define Signaling_pch
+
+#import <NIMSDK/NIMSDK.h>
+#import "UIView+Toast.h"
+#import "NTESDataCenter.h"
+#import "NTESDemoConfig.h"
+
+#endif /* Signaling_pch */
