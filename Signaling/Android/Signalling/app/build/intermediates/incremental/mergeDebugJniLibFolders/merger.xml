@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/doc/Android/NimAndroid/Signalling-demo/Signalling/app/src/main/jniLibs"/><source path="/Users/doc/Android/NimAndroid/Signalling-demo/Signalling/app/libs"/></dataSet><dataSet config="debug"><source path="/Users/doc/Android/NimAndroid/Signalling-demo/Signalling/app/src/debug/jniLibs"/></dataSet></merger>

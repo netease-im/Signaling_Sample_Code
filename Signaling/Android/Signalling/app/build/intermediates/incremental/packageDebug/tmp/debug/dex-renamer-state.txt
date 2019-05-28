@@ -1,0 +1,4 @@
+#Fri May 24 16:06:41 CST 2019
+base.0=/Users/doc/Android/NimAndroid/Signalling-demo/Signalling/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
