@@ -1,5 +1,5 @@
 
-# 云信 IM 独立信令 + 声网音视频示例程序 for PC
+# 云信 IM 独立信令示例程序 for PC
 
 该示例代码演示了如何使用云信 IM 的独立信令账号体系与多方建立联系通道，并整合了第三方音视频能力通过信令通道沟通建立连接。
 
@@ -29,18 +29,15 @@ git clone https://github.com/netease-im/Signaling_Sample_Code.git -v --depth 1
  - [https://yunxin.163.com/](https://yunxin.163.com/) 注册并登录云信账号，在左侧导航应用一栏中创建自己的应用
  - 点击生成的应用，在应用页面上方点击 `App Key 管理`，复制 AppKey 到示例项目 main.cpp 中赋值给 `LoginManager::kAppKey`
  - 返回应用页面在功能管理->IM免费版右侧点击账号管理，生成部分测试账号提供测试使用
- - 注册声网账号并创建应用，复制应用对应的 App ID 到 main.cpp 中赋值给 `AgoraRtcEngine::kAppId`（独立信令演示不需要）
  - 使用 Qt5 以上版本（MSVC 编译器）打开目录下的 signaling.pro 生成并编译项目即可测试使用
 
 ## 目录结构
 
 目录 | 作用
 ---- | ---
-libs | 包含云信信令 SDK 和 声网 RTC SDK
+libs | 包含云信信令 SDK
 shared | 共享 Qt Quick 组件和一些工具类
 signaling | 单独云信信令通道演示
-signaling_agora_p2p | 点对点通过信令通道呼叫对方+第三方音视频聊天演示
-signaling_agora_meeting | 会议模式通过信令通道邀请对方+第三方音视频聊天演示
 third_party | 第三方依赖库（主要由云信 C++ 封装层使用）
 
 ## 程序发布
