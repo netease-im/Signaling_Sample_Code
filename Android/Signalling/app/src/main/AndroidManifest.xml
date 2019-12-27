@@ -55,7 +55,7 @@
 
         <meta-data
             android:name="com.netease.nim.appKey"
-            android:value="fe416640c8e8a72734219e1847ad2547" />
+            android:value="your app key" />
 
 
         <!-- 云信后台服务，请使用独立进程。 -->
