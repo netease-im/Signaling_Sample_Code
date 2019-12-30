@@ -27,7 +27,7 @@ import com.netease.nrtc.sdk.NRtc;
 import com.netease.nrtc.sdk.NRtcEx;
 import com.netease.nrtc.sdk.common.EglContextWrapper;
 import com.netease.nrtc.sdk.common.statistics.RtcStats;
-import com.netease.nrtc.sdk.video.CameraCapturer;
+import com.netease.nrtc.sdk.video.CameraVideoCapturer;
 import com.netease.nrtc.sdk.video.SurfaceViewRender;
 import com.netease.nrtc.sdk.video.VideoCapturerFactory;
 import com.netease.nrtc.video.render.IVideoRender;
@@ -53,7 +53,7 @@ public class ChattingActivity extends AppCompatActivity implements View.OnClickL
 
     private NRtcEx nrtcEx;
     private EglContextWrapper eglContext;
-    protected CameraCapturer cameraCapturer;
+    protected CameraVideoCapturer cameraCapturer;
     private LongSparseArray<IVideoRender> userRenders = new LongSparseArray<>();
 
     private ChannelBaseInfo channelInfo;
@@ -106,7 +106,11 @@ public class ChattingActivity extends AppCompatActivity implements View.OnClickL
 
 
     private void createNRTC() {
-        nrtcEx = (NRtcEx) NRtc.create(this, CacheInfo.getAppKey(), new InnerNRtcCallback());
+        try {
+            nrtcEx = (NRtcEx) NRtc.create(this, CacheInfo.getAppKey(), new InnerNRtcCallback());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         eglContext = EglContextWrapper.createEglContext();
         if (eglContext.isEGL14Supported()) {
             nrtcEx.updateSharedEGLContext((EGLContext) eglContext.getEglContext());
@@ -159,7 +163,9 @@ public class ChattingActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     protected void onPause() {
-        nrtcEx.stopVideoPreview();
+        if (nrtcEx != null) {
+            nrtcEx.stopVideoPreview();
+        }
         super.onPause();
     }
 
@@ -242,7 +248,7 @@ public class ChattingActivity extends AppCompatActivity implements View.OnClickL
 
     private void enableNrtc() {
 
-        cameraCapturer = VideoCapturerFactory.createCameraCapturer();
+        cameraCapturer = VideoCapturerFactory.createCameraCapturer(true);
         nrtcEx.setupVideoCapturer(cameraCapturer);
         nrtcEx.enableVideo();
         IVideoRender videoRender = new SurfaceViewRender(this);

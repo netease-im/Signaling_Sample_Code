@@ -4,11 +4,14 @@ import android.util.Log;
 
 import com.netease.nrtc.sdk.NRtcCallback;
 import com.netease.nrtc.sdk.NRtcConstants;
-import com.netease.nrtc.sdk.common.AudioFrame;
+import com.netease.nrtc.sdk.audio.AudioFrame;
+import com.netease.nrtc.sdk.common.VideoFilterParameter;
 import com.netease.nrtc.sdk.common.VideoFrame;
 import com.netease.nrtc.sdk.common.statistics.NetStats;
 import com.netease.nrtc.sdk.common.statistics.RtcStats;
 import com.netease.nrtc.sdk.common.statistics.SessionStats;
+
+import java.util.Set;
 
 public class SimpleNRtcCallback implements NRtcCallback {
 
@@ -232,27 +235,69 @@ public class SimpleNRtcCallback implements NRtcCallback {
         return true;
     }
 
-
-    /**
-     * 语音数据处理外部处理接口, 此接口需要同步处理,不要改变语音的时长.
-     *
-     * @param frame 待处理数据
-     * @return 返回true成功
-     */
     @Override
-    public boolean onAudioFrameFilter(final AudioFrame frame) {
-        Log.d(TAG, "onAudioFrameFilter  ");
-        return true;
+    public boolean onVideoFrameFilter(com.netease.nrtc.sdk.video.VideoFrame videoFrame, com.netease.nrtc.sdk.video.VideoFrame[] videoFrames, VideoFilterParameter videoFilterParameter) {
+        return false;
     }
 
-    /**
-     * 语音播放设备发生改变
-     *
-     * @param selected 选择的设备
-     */
     @Override
-    public void onAudioDeviceChanged(final int selected) {
-        Log.d(TAG, "onAudioDeviceChanged ,  selected =  " + selected);
+    public boolean onAudioFrameFilter(AudioFrame audioFrame) {
+        return false;
+    }
+
+    @Override
+    public void onAudioDeviceChanged(int i, Set<Integer> set, boolean b) {
+
+    }
+
+    @Override
+    public void onAudioEffectPreload(int i, int i1) {
+
+    }
+
+    @Override
+    public void onAudioEffectPlayEvent(int i, int i1) {
+
+    }
+
+    @Override
+    public void onPublishVideoResult(int i) {
+
+    }
+
+    @Override
+    public void onUnpublishVideoResult(int i) {
+
+    }
+
+    @Override
+    public void onSubscribeVideoResult(long l, int i, int i1) {
+
+    }
+
+    @Override
+    public void onUnsubscribeVideoResult(long l, int i, int i1) {
+
+    }
+
+    @Override
+    public void onRemoteUnpublishVideo(long l) {
+
+    }
+
+    @Override
+    public void onRemotePublishVideo(long l, int[] ints) {
+
+    }
+
+    @Override
+    public void onSubscribeAudioResult(int i) {
+
+    }
+
+    @Override
+    public void onUnsubscribeAudioResult(int i) {
+
     }
 
 

@@ -1,7 +1,12 @@
 package com.netease.signalling.demo.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,18 +21,29 @@ import com.netease.signalling.demo.model.CacheInfo;
 import com.netease.signalling.demo.utils.BaseUtil;
 import com.netease.signalling.demo.utils.ToastHelper;
 
+import java.util.ArrayList;
+
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+
+    private static final int REQUEST_PERMISSIONS = 1001;
+    private static final String[] ALL_PERMISSIONS = new String[]{
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA,
+            Manifest.permission.RECORD_AUDIO
+    };
+
     private EditText edtLoginUserAccount;
     private EditText edtLoginPassword;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         setupView();
+        checkAllPermission();
     }
 
     private void setupView() {
@@ -48,6 +64,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    private void checkAllPermission() {
+
+        ArrayList<String> permissionDenied = new ArrayList<>();
+        for (String permission : ALL_PERMISSIONS) {
+            if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
+                permissionDenied.add(permission);
+            }
+        }
+        if (permissionDenied.size() == 0) {
+            return;
+        }
+        String[] deniedArr = new String[0];
+        deniedArr = permissionDenied.toArray(deniedArr);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(deniedArr, REQUEST_PERMISSIONS);
+        }
+    }
 
     private boolean isInLogin;
 
@@ -61,7 +94,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             ToastHelper.showToast(this, "正在登录中，请勿重复提交");
             return;
         }
-        boolean isDemo = CacheInfo.getAppKey().contains("0c8e8a7");
+        boolean isDemo = CacheInfo.getAppKey().contains("0c8e8a7") || CacheInfo.getAppKey().contains("45c6af3");
         password = isDemo ? BaseUtil.getStringMD5(password) : password;
         isInLogin = true;
         NIMClient.getService(AuthService.class).login(new LoginInfo(account, password)).setCallback(new RequestCallback<LoginInfo>() {
@@ -87,5 +120,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 ToastHelper.showToast(LoginActivity.this, "登录异常");
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode != REQUEST_PERMISSIONS) {
+            return;
+        }
+        int len = grantResults.length;
+        if (len == 0) {
+            return;
+        }
+        for (int index = 0; index < len; ++index) {
+            if (grantResults[index] == PackageManager.PERMISSION_DENIED) {
+                ToastHelper.showToast(this, permissions[index] + " 权限获取失败");
+                finish();
+                return;
+            }
+        }
     }
 }
